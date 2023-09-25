@@ -5,9 +5,9 @@ This is a simple way to create and delete Meme's using the Giphy api. Users are 
 ![Model](griphy.png)
 
 ### Features
-* Add new task
-* Mark task as completed / uncompleted
-* Delete single task
+* Add 5 or less new Meme
+* Enter a top and bottom value to displayed on the gif
+* Delete single gif at a time.
 
 ### Technologies used:
 * HTML
