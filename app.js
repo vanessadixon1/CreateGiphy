@@ -39,8 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     content.append(form, parentDiv);
 
     button.addEventListener("click", () => {
-        //enter your api key for griphy 
-        let yourAPIKey = "";
+          let yourAPIKey = "";
         const d = async () => {
             let res = await axios.get(`https://api.giphy.com/v1/gifs/search?${yourAPIKey}&q=${gifName.value}&limit=1&offset=0&rating=g&lang=en&bundle=messaging_non_clips`);
 
@@ -55,15 +54,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }else {
                 const childLi = createGiphyAndButton(src, topInput.value, bottomInput.value, alt);
-                
-                if(parentDiv.children.length < 5) {
-                    topInput.value = "";
+                topInput.value = "";
                     bottomInput.value = "";
                     gifName.value = ""
                     parentDiv.append(childLi);
-                }else {
-                    alert("delete a gif in order to add another one")
-                } 
             }
         }).catch((e) => {
             alert(e.message);
