@@ -7,7 +7,7 @@ This is a desktop app. Mobile Version coming soon...
 ![Model](griphy.png)
 
 ### Features
-* Add 5 or less new Meme
+* Add 5 or less new Memes
 * Enter a top and bottom value to displayed on the gif
 * Delete single gif at a time.
 
