@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
         //enter your api key for griphy 
         let yourAPIKey = "";
         const d = async () => {
-            let res = await axios.get(`https://api.giphy.com/v1/gifs/search?${yourAPIKey}=${gifName.value}&limit=1&offset=0&rating=g&lang=en&bundle=messaging_non_clips`);
+            let res = await axios.get(`https://api.giphy.com/v1/gifs/search?${yourAPIKey}&q=${gifName.value}&limit=1&offset=0&rating=g&lang=en&bundle=messaging_non_clips`);
 
             return res.data;
         } 
