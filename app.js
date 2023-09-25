@@ -39,8 +39,10 @@ document.addEventListener("DOMContentLoaded", () => {
     content.append(form, parentDiv);
 
     button.addEventListener("click", () => {
+        //enter your api key for griphy 
+        let yourAPIKey = "";
         const d = async () => {
-            let res = await axios.get(`https://api.giphy.com/v1/gifs/search?api_key=g04RjPLTTX4K5HWGXmTEZG681jFsF2sC&q=${gifName.value}&limit=1&offset=0&rating=g&lang=en&bundle=messaging_non_clips`);
+            let res = await axios.get(`https://api.giphy.com/v1/gifs/search?${yourAPIKey}=${gifName.value}&limit=1&offset=0&rating=g&lang=en&bundle=messaging_non_clips`);
 
             return res.data;
         } 
@@ -113,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         return el;
     }
-    
+
     parentDiv.addEventListener("click",function(e) {
         if(e.target.className === "griphyBtn") {
            e.target.parentElement.remove();
