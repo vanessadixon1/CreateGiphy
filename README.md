@@ -2,6 +2,8 @@
 
 This is a simple way to create and delete Meme's using the Giphy api. Users are only able to add 5 meme's at one time, and can only delete only a single meme at a time. In order to use the app, you will need to go to https://giphy.com/ create an account, and get an API KEY and place it in the code.
 
+This is a desktop app. Mobile Version coming soon...
+
 ![Model](griphy.png)
 
 ### Features
