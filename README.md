@@ -7,9 +7,8 @@ This is a desktop app. Mobile Version coming soon...
 ![Model](giphy.png)
 
 ### Features
-* Add 5 or less new Memes
-* Enter a top and bottom value to displayed on the gif
-* Delete single gif at a time.
+* Add unlimited gifs by searching a term and clicking search button
+* Delete all gifs at once by clicking Remove button
 
 ### Technologies used:
 * HTML
