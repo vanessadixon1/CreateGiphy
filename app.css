@@ -1,83 +1,55 @@
 html {
-    font-size: 62.5%;
-    background-color: #7149C6;
-}
-
-body {
-    font-size: 1.6rem;
-}
-
-h1 {
-    display: flex;
-    justify-content: center;
+    box-sizing: border-box;
+    font-family: sans-serif serif;
+    background-color: black;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-form > * {
-     flex-basis: 3rem;
-     width: 35%;
-     margin-bottom: 1%;
-}
-
-form > input[type="button"] {
-    width: 6%;
-}
-
-form > input[placeholder = "Top Gif Text"], input[placeholder = "Bottom Gif Text"], input[placeholder = "Gif Name"]{
-    text-align: center; 
-}
-
-h3 {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    font-family: 'Caveat', cursive;
     position: relative;
-    bottom:61%;
-    color: #EBB02D;
-    font-size: 3rem;
-    width: 80%;
+    top: 70px;
+    left: 35%;
 }
 
-.h3Value {
-    bottom: 56%;
+h1 {
+    position: relative;
+    bottom: 20px;
+    left: 400px;
+    margin: 0 20%;
+}
+ul li img{
+    width: 200px;
+    height: 20vh;
 }
 
+button {
+    margin: 1px;
+    width: 8%;
+    padding: 10px;
+    color: white;
+    background-color: rgb(244, 112, 24);
+    border-radius: 5px;
+}
 
-.container {
+button:first-of-type {
+    background-color: rgb(34, 33, 33);
+    color: white
+}
+
+form input {
+    width: 8%;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+div ul {
     display: flex;
-    flex-wrap: wrap;
-    gap: 2px;
+    justify-content:space-evenly;
+    flex-wrap:wrap;
+    margin: 50px;
 }
 
-li {
-   list-style-type: none;
-}
-
-.container input {
-    text-align: center;
-    width: 25%;
-    margin-left: 30%;
-    height: 4vh;
-    border-radius: 7%;
-    border: solid #D83F31;
-    background-color:#D83F31;
-    color: #F4EEEE;
-}
-
-.container img {
-   width: 300px;
-   height: 20vh;
-   border-radius: 3%;
-}
-
-.container input:hover {
-    border: solid #F5F5F5;
-    background-color:#F5F5F5;
-    color: #141E27;
+ul li {
+    top: 50px;
+    right: 15%;
+    list-style-type: none;
 }

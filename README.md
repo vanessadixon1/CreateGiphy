@@ -4,7 +4,7 @@ This is a simple way to add and delete gifs using the Giphy api. User is able to
 
 This is a desktop app. Mobile Version coming soon...
 
-![Model](griphy.png)
+![Model](giphy.png)
 
 ### Features
 * Add 5 or less new Memes

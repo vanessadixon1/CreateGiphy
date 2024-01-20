@@ -1,119 +1,79 @@
-document.addEventListener("DOMContentLoaded", () => {
+let body = document.querySelector("body");
+body.prepend(createForm());
+let form = document.querySelector('form');
+let searchTerm = document.querySelector('#searchTerm');
+let ul = document.querySelector("#giphyList");
 
-    const topInputAttrs = {
-        "id": "top",
-        "type": "input",
-        "placeholder": "Top Gif Text"
+function createForm() {
+    let form = document.createElement('form');
+    let input = document.createElement('input');
+    let searchButton = document.createElement('button');
+    searchButton.innerText = "Search Giphy!";
+    let removeButton = document.createElement('button');
+    removeButton.innerText = "Remove Images";
+    input.setAttribute("id", "searchTerm");
+    input.setAttribute("placeholder", "Enter a search term")
+    form.append(input);
+    form.append(searchButton);
+    form.append(removeButton);
+    return form;
+}
+
+function apiKey() {
+    return "MhAodEJIJxQMxW9XqxKjyXfNYdLoOIym";
+}
+async function searchGiphy(term, key) {
+    try {
+        let res = await axios.get(`http://api.giphy.com/v1/gifs/search?q=${term}&api_key=${key}`);
+
+        let {data} = res.data;
+        let randIndx = Math.floor(Math.random() * data.length)
+        let {url} = data[randIndx].images.original;
+        let {title} = data[randIndx];
+        displayGiphy(url,title);
+    } catch(e) {
+        alert("Invalid term entered for search");
     }
+}
 
-    const bottomInputAttrs = {
-        "id": "bottom",
-        "type": "input",
-        "placeholder": "Bottom Gif Text"
+function displayGiphy(img,title) {
+    ul.append(createNewGipsyLi(img, title));
+}
+
+function createNewGipsyLi(gif, title) {
+    let li = document.createElement('li');
+    let img = document.createElement('img');
+    img.setAttribute('src', gif);
+    img.setAttribute('alt', title);
+    li.append(img);
+    return li;
+}
+
+function formSubmission(e) {
+    e.preventDefault();
+    if(e.target.tagName === "INPUT") {
+
+    }else if(e.target.innerText === "Search Giphy!") {
+        let {value} = searchTerm;
+        searchGiphy(value.toLowerCase(), apiKey());            
+    }else if(e.target.innerText.includes("Remove")) {
+        ul.innerHTML = "";
     }
+    searchTerm.value = "";
+}
 
-    const urlInputAttrs = {
-        "id": "url",
-        "type": "input",
-        "placeholder": "Gif Name"
+function headerRandomColors() {
+   let header = document.querySelectorAll(".changeColor");
+   setInterval(() => {
+    for(let word of header) {
+        let r = Math.floor(Math.random() * 240);
+        let g = Math.floor(Math.random() * 100);
+        let b = Math.floor(Math.random() * 50);
+        word.style.color =  `rgb(${r}, ${g}, ${b})`;
     }
+   },800);
+}
 
-    const buttonAttrs = {
-        "type": "button",
-        "value": "Submit"
-    }
+document.addEventListener('DOMContentLoaded', headerRandomColors);
 
-    const parentDivAttrs = {
-        "class": "container"
-    } 
-
-    let content = document.getElementById("content");
-    let form = createElement("form", 0);
-    let topInput = createElement("input", topInputAttrs);
-    let bottomInput = createElement("input", bottomInputAttrs);
-    let gifName = createElement("input", urlInputAttrs);
-    let button = createElement("input", buttonAttrs);
-    let parentDiv = createElement("ul", parentDivAttrs);
-
-    form.append(topInput, bottomInput, gifName, button);
-    content.append(form, parentDiv);
-
-    button.addEventListener("click", () => {
-          let yourAPIKey = "";
-        const d = async () => {
-            let res = await axios.get(`https://api.giphy.com/v1/gifs/search?${yourAPIKey}&q=${gifName.value}&limit=1&offset=0&rating=g&lang=en&bundle=messaging_non_clips`);
-
-            return res.data;
-        } 
-     
-        d().then(data => {
-            const src = data.data[0].images.original.url
-            const alt = data.data[0].username;
-            if(!src || !topInput.value || !bottomInput.value) {
-                alert("form incomplete!")
-                return;
-            }else {
-                const childLi = createGiphyAndButton(src, topInput.value, bottomInput.value, alt);
-                topInput.value = "";
-                    bottomInput.value = "";
-                    gifName.value = ""
-                    parentDiv.append(childLi);
-            }
-        }).catch((e) => {
-            alert(e.message);
-        })
-    });
-
-    function createGiphyAndButton(src,topValue, bottomValue, alt) {
-        const imgAttr = {
-            src,
-            alt
-        }
-    
-        const bottomImgValueAttr = {
-            "class": "h3Value"
-        }
-
-        const btnAttr = {
-            "class": "griphyBtn",
-            "value": "Delete",
-            "type": "button"
-        }
-    
-        let li = createElement("li",0);
-        let img = createElement("img", imgAttr);
-        
-        let topImgValue = createElement("h3", 0);
-        let bottomImgValue = createElement("h3",bottomImgValueAttr);
-        let btn = createElement("input", btnAttr);
-
-        if(topInput.value.length > 20 || bottomInput.value > 20 ) {
-            alert("Text has to be 20 characters are less!");
-            return;
-        }else {
-            topImgValue.innerText = topValue;
-            bottomImgValue.innerText = bottomValue;
-            
-            li.append(img ,btn, topImgValue, bottomImgValue);
-        
-            return li;
-        } 
-    }
-
-    function createElement(element, attributes) {
-        let el = document.createElement(element);
-        if(attributes) {
-            for(let attr in attributes) {
-                el.setAttribute(attr, attributes[attr]);
-            }
-        }
-        return el;
-    }
-
-    parentDiv.addEventListener("click",function(e) {
-        if(e.target.className === "griphyBtn") {
-           e.target.parentElement.remove();
-        }
-       
-    })
-});
+form.addEventListener('click', formSubmission);
