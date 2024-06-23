@@ -24,8 +24,7 @@ function apiKey() {
 }
 async function searchGiphy(term, key) {
     try {
-        let res = await axios.get(`http://api.giphy.com/v1/gifs/search?q=${term}&api_key=${key}`);
-
+        let res = await axios.get(`https://api.giphy.com/v1/gifs/search?api_key=${key}&q=${term}`);
         let {data} = res.data;
         let randIndx = Math.floor(Math.random() * data.length)
         let {url} = data[randIndx].images.original;
