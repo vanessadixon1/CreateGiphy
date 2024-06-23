@@ -20,7 +20,7 @@ function createForm() {
 }
 
 function apiKey() {
-    return "MhAodEJIJxQMxW9XqxKjyXfNYdLoOIym";
+    return "g04RjPLTTX4K5HWGXmTEZG681jFsF2sC";
 }
 async function searchGiphy(term, key) {
     try {
